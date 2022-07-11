@@ -4,8 +4,8 @@ import { BrowserRouter, HashRouter } from "react-router-dom";
 import App from './App.jsx';
 
 render(
-  <HashRouter >
+  <BrowserRouter >
     <App />
-  </HashRouter>,
+  </BrowserRouter>,
   document.getElementById('root'),
 );
