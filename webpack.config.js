@@ -9,7 +9,7 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
-  mode: process.env.NODE_ENV,
+  mode: 'development',
   module: {
     rules: [
       { 
@@ -22,7 +22,7 @@ module.exports = {
         }
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /.(scss|css|sass)$/,
         exclude: /node_modules/,
         use: [
           'style-loader', 'css-loader', 'sass-loader',
