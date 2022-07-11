@@ -1,0 +1,19 @@
+{
+  "name": "coffeeandcocktails",
+  "version": "1.0.0",
+  "description": "E-commerce template website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JigglypuffNY33/coffeeandcocktails.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JigglypuffNY33/coffeeandcocktails/issues"
+  },
+  "homepage": "https://github.com/JigglypuffNY33/coffeeandcocktails#readme"
+}
