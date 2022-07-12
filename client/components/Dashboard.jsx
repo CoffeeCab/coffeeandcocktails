@@ -25,17 +25,21 @@ class Dashboard extends Component {
         const drinkCards = [];
 
         for(let i = 0; i < this.props.drinksList.length; i++){
+          console.log('each item being passed down: ', this.props.drinksList[i])
             drinkCards.push(<DrinkCard key={i} drinkItem={this.props.drinksList[i]} rerenderFunction={this.rerenderFunction}/>)
         }
 
         const shoppingCartList = [];
 
-          for(let i = 1; i < this.props.drinksList.length; i++){
+          for(let i = 0; i < this.props.drinksList.length; i++){
             //THIS LINE RUNS THROUGH THE FOR LOOP 
 
             // console.log(typeof parseInt(JSON.parse((localStorage.getItem(localStorage.key(i)))).total))
-            console.log(localStorage.getItem(localStorage.key(i)))
-            if(parseInt(JSON.parse((localStorage.getItem(localStorage.key(i)))))){
+            console.log('json version of each key/value:', localStorage.getItem(localStorage.key(i)))
+            console.log('parsed version of each key/value:', JSON.parse(localStorage.getItem(localStorage.key(i))))
+            console.log('total of each key/value:', JSON.parse(localStorage.getItem(localStorage.key(i))).total)
+
+            if(JSON.parse((localStorage.getItem(localStorage.key(i))))){
               //THIS LINE DOES NOT RUN
               console.log('elephant')
               let v = parseInt(JSON.parse((localStorage.getItem(localStorage.key(i)))).total);
