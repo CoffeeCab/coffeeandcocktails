@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../index.html'))
 });
 
-// for singup & login
+// for signup & login
 app.use('/api', apiRouter);
 
 // checkout 
@@ -42,9 +42,10 @@ app.use((err, req, res, next) => {
   return res.status(errorObj.status).json(errorObj.message);
 });
 
-// listenning to port 
+// listening to port 
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}...`);
 });
 
 module.exports = app;
+
