@@ -24,6 +24,7 @@ class Dashboard extends Component {
           // console.log(localStorage.getItem(JSON.stringify(i)))
           console.log(typeof parseInt(JSON.parse((localStorage.getItem(localStorage.key(i)))).total))
           let v = parseInt(JSON.parse((localStorage.getItem(localStorage.key(i)))).total);
+          //THIS IS WHERE YOU LEFT OFF!!!!!!!!
           console.log('v: ', v)
           if(v){
           // if(parseInt(JSON.parse((localStorage.getItem(localStorage.key(i)))).total) > 0){

@@ -23,3 +23,5 @@ authController.test = (req, res, next) => {
 //   if(req.cookie.)
 
 // } 
+
+module.exports = authController;
