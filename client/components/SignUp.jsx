@@ -15,11 +15,11 @@ const newPasswordInput = e => {
 
 class SignUp extends Component {
     render(){
-        return (<div>
+        return (<div className="inputBox">
             <h1>Sign Up Here!</h1>
-            <input id="newUsername" placeholder="Enter Username" onChange={ newUsernameInput }></input>
+            <input className="input" id="newUsername" placeholder="Enter Username" onChange={ newUsernameInput }></input>
             <br></br>
-            <input id="newPassword" placeholder="Enter Password" onChange={ newPasswordInput }></input>
+            <input className="input" id="newPassword" placeholder="Enter Password" onChange={ newPasswordInput }></input>
             <br></br>
             <button id="signup" onClick={ () => console.log(`username is '${newUsername}' & password is '${newPassword}'`)}>Sign Up</button>
             <br></br>

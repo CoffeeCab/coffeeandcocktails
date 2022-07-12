@@ -14,7 +14,7 @@ class Dashboard extends Component {
         const drinkCards = [];
 
         for(let i = 0; i < this.props.drinksList.length; i++){
-            drinkCards.push(<DrinkCard drinkItem={this.props.drinksList[i]}/>)
+            drinkCards.push(<DrinkCard key={i} drinkItem={this.props.drinksList[i]}/>)
         }
 
         return (
@@ -23,7 +23,7 @@ class Dashboard extends Component {
           <Link to='/checkout'>Buy your coffee</Link>
           <br></br>
           <Link to='/login'>Sign out</Link>
-          <div class="drinksDisplay">
+          <div className="drinksDisplay">
             {drinkCards}
           </div>      
         </div>

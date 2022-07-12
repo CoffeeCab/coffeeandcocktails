@@ -7,7 +7,9 @@ class Checkout extends Component {
         return (
         <div>
           <h1>Hey this is the checkout</h1>
-          <Link to='/success'>Coffee is on its way!</Link>
+          {/* //Clear shopping cart after order */}
+          <button onClick={() => localStorage.clear()}>Order</button>
+          <Link to='/success'>Click on the button to order your coffee!</Link>
           <br></br>
           <Link to='/login'>Sign out</Link>
         </div>
