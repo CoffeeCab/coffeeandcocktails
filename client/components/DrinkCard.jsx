@@ -27,6 +27,9 @@ class DrinkCard extends Component {
                         console.log('newTotal: ', newTotal)
                         itemObj.total = newTotal.toString()
                         localStorage.setItem(JSON.stringify(this.props.drinkItem.id), JSON.stringify(itemObj))
+
+                        //Re-render dashboard
+                        this.props.rerenderFunction();
                     } 
                     //If it isn't in the cart.
                     else {
@@ -37,7 +40,9 @@ class DrinkCard extends Component {
                             price: this.props.drinkItem.price,
                             total: '1'
                         }
-                        localStorage.setItem(JSON.stringify(this.props.drinkItem.id), JSON.stringify(itemObj))
+                        localStorage.setItem(JSON.stringify(this.props.drinkItem.id), JSON.stringify(itemObj));
+                        //Re-render dashboard
+                        this.props.rerenderFunction();
                     }
                     }}>Add to cart</button>
                 <button className="deleteButton" onClick={() => {
@@ -49,10 +54,14 @@ class DrinkCard extends Component {
                         let newTotal = parseInt(itemObj.total) - 1;
                         console.log('newTotal: ', newTotal)
                         itemObj.total = newTotal.toString()
-                        localStorage.setItem(JSON.stringify(this.props.drinkItem.id), JSON.stringify(itemObj))
+                        localStorage.setItem(JSON.stringify(this.props.drinkItem.id), JSON.stringify(itemObj));
+                        //Re-render dashboard
+                        this.props.rerenderFunction();
                     } //If it isn't in the cart.
                     else {
-                        console.log('No items of this type added to cart.')
+                        console.log('No items of this type added to cart.');
+                        //Re-render dashboard
+                        this.props.rerenderFunction();
                     }
                    }
                    }>Remove from cart</button>

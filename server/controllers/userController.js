@@ -11,7 +11,7 @@ userController.checkUser = async (req, res, next) => {
   try {
     const data = await db.query(query, value);
     
-    if (data.rows[0]){
+    if (data.rows[0]) {
       res.locals.data = {};
       res.locals.data.user = data.rows[0];
       return next();

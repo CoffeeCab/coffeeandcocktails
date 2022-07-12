@@ -16,15 +16,7 @@ class App extends Component {
                 user: '',
                 password: ''
             }, 
-            shoppingCart: {
-                items: [
-                    {
-                    item: '',
-                    quantity: '',
-                    price: ''
-                    }
-                ]
-            }, 
+            randomVar: true,
             //Note! The browser's Local Storage can only store strings. So make sure id, price, & item are strings.
             drinksList: [ 
                 {
@@ -50,8 +42,8 @@ class App extends Component {
                 },
             ]
         }
-        this.usernameInput = this.usernameInput.bind(this);
-        this.passwordInput = this.passwordInput.bind(this);
+        // this.usernameInput = this.usernameInput.bind(this);
+        // this.passwordInput = this.passwordInput.bind(this);
     }
 
     // componentDidMount(){
@@ -60,17 +52,36 @@ class App extends Component {
     //     }
     // }
 
-   
+    // addItem = (e, itemId, itemObj) => {
+    //     let newDrinksList = this.state.drinksList 
+
+    //     const replacementObj = {};
+
+    //     Object.assign(newDrinksList[itemId], itemObj)
+
+    //     this.setState({
+    //         drinksList: drinksList(0)
+    //     })
+    // }
       
-    usernameInput = e => {
-        username = e.target.value;
-        return username;
-      }
+    // usernameInput = e => {
+    //     this.state.currentUser.user = e.target.value;
+    //     return this.state.currentUser.username;
+    //   }
       
-    passwordInput = e => {
-        password = e.target.value;
-        return password;
-      }  
+    // passwordInput = e => {
+    //     this.state.currentUser.password = e.target.value;
+    //     return this.state.currentUser.password;
+    //   }  
+
+    onBoxClick = (e1, e2) => {
+        console.log('user:', e1, 'pass:', e2);
+            this.setState({ currentUser: {
+                user: e1,
+                password: e2
+            } 
+        })
+    }
 
     render(){
         return (
@@ -79,17 +90,17 @@ class App extends Component {
                     <Route
                         exact
                         path="/"
-                        element={<LoginPage usernameInput={this.usernameInput} passwordInput={this.passwordInput}/>}
+                        element={<LoginPage user={this.state.currentUser.user} pass={this.state.currentUser.password} onBoxClick={this.onBoxClick} />}
                     />
                     <Route
                         exact
                         path="/signUp"
-                        element={<SignUp/>}
+                        element={<SignUp newUser={this.state.currentUser.user} newPass={this.state.currentUser.password} onBoxClick={this.onBoxClick} />}
                     />
                     <Route
                         exact
                         path="/dashboard"
-                        element={<Dashboard userInfo={this.state.currentUser} drinksList={this.state.drinksList} addToCart={this.addToCart}/>}
+                        element={<Dashboard userInfo={this.state.currentUser} drinksList={this.state.drinksList} addToCart={this.addToCart} randomVar={this.state.randomVar}/>}
                     />
                     <Route
                         exact

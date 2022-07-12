@@ -1,5 +1,5 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
+// const cookieParser = require('cookie-parser');
 
 const authController = {};
 
@@ -15,8 +15,14 @@ authController.verifyUser = (req,res, next) => {
 }
 
 authController.test = (req, res, next) => {
-  console.log('testing auth middleware')
+  console.log('testing auth middleware');
+  return next();
 }
+
+authController.test2 = (req, res, next) => {
+  console.log("testing goog callback middleware");
+  return next();
+};
 
 // authController.tokenChecking = (req,res,next) => {
 

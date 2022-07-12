@@ -6,7 +6,7 @@ class GAuth extends Component {
     return (
       <div className="GAuthContainer">
         <p className="register">- or login with -</p>
-        <a href="auth/google" className="btn btn-danger"><span className="fa fa-google"></span> SignIn with Google</a>
+        <a href="api/auth/google" className="btn btn-danger"><span className="fa fa-google"></span> SignIn with Google</a>
       </div>
     );
   }
