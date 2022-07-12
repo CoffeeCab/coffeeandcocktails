@@ -2,13 +2,12 @@ html {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     background: #f6f7fc;
-    height: 100%;
+    background-image: url('https://goingplaces.malaysiaairlines.com/wp-content/uploads/2019/03/32283963_l-1024x680.jpg') no-repeat;
 }
 
 body {
     font-size: 1.5rem;
     font-weight: 400;
-    line-height: 1.5;
     color: #212529;
     // text-align: left;
 }
@@ -30,19 +29,19 @@ h1 {
     justify-content: center;
     align-items: center;
     background: #f6f7fc;
-    height: 100%;
 }
 
 .inputBox {
     background: #fff;
     padding: 40px;
     padding-left: 60px;
-    margin-top: 225px;
+    // padding-top: 160px;
+    margin-top: 100px;
     -webkit-box-flex: 0;
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
     max-width: 50%;
-    // -webkit-box-align: center;
+    -webkit-box-align: center;
     justify-content: center;
     align-items: center;
     background-color: #fff;
