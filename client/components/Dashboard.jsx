@@ -32,16 +32,12 @@ class Dashboard extends Component {
         const shoppingCartList = [];
 
           for(let i = 0; i < this.props.drinksList.length; i++){
-            //THIS LINE RUNS THROUGH THE FOR LOOP 
-
             // console.log(typeof parseInt(JSON.parse((localStorage.getItem(localStorage.key(i)))).total))
             console.log('json version of each key/value:', localStorage.getItem(localStorage.key(i)))
             console.log('parsed version of each key/value:', JSON.parse(localStorage.getItem(localStorage.key(i))))
             console.log('total of each key/value:', JSON.parse(localStorage.getItem(localStorage.key(i))).total)
 
             if(JSON.parse((localStorage.getItem(localStorage.key(i))))){
-              //THIS LINE DOES NOT RUN
-              console.log('elephant')
               let v = parseInt(JSON.parse((localStorage.getItem(localStorage.key(i)))).total);
               // console.log('v: ', v)
               if(v){

@@ -116,7 +116,7 @@ class App extends Component {
                     <Route
                         exact
                         path="/dashboard"
-                        element={<Dashboard userInfo={this.state.currentUser} drinksList={this.state.drinksList} addToCart={this.addToCart}/>}
+                        element={<Dashboard userInfo={this.state.currentUser} drinksList={this.state.drinksList} addToCart={this.addToCart} randomVar={this.state.randomVar}/>}
                     />
                     <Route
                         exact
