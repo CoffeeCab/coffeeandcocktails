@@ -20,21 +20,21 @@ class App extends Component {
             //Note! The browser's Local Storage can only store strings. So make sure id, price, & item are strings.
             drinksList: [ 
                 {
-                id: '1',
+                id: '0',
                 item: 'Starbucks Iced Coffee',
                 photo: 'https://www.tastingtable.com/img/gallery/the-absolute-best-starbucks-iced-coffee-drinks-ranked/intro-1645739811.jpg',
                 price: '26',
                 total: '0'
                 },
                 {
-                id: '2',
+                id: '1',
                 item: 'Cookie Cake Cocktail',
                 photo: 'https://i.pinimg.com/originals/d6/c5/35/d6c535f8bfa8497e0525e356d25efb65.jpg',
                 price: '15',
                 total: '0'
                 },
                 {
-                id: '3',
+                id: '2',
                 item: 'Black Coffee',
                 photo: 'https://img.buzzfeed.com/buzzfeed-static/static/2017-06/29/19/asset/buzzfeed-prod-fastlane-01/sub-buzz-12062-1498777435-1.jpg',
                 price: '0.5',
@@ -73,6 +73,22 @@ class App extends Component {
     //     this.state.currentUser.password = e.target.value;
     //     return this.state.currentUser.password;
     //   }  
+
+    componentDidMount(){
+        for(let i = 0; i < this.state.drinksList.length; i++){
+            let drinkItem = this.state.drinksList[i]
+            console.log(drinkItem)
+            let drinkId = drinkItem.id;
+            const itemObj = {
+                id: drinkItem.id,
+                item: drinkItem.item,
+                photo: drinkItem.photo,
+                price: drinkItem.price,
+                total: '0'
+            };
+            localStorage.setItem(JSON.stringify(drinkId), JSON.stringify(itemObj));
+        }
+    }
 
     onBoxClick = (e1, e2) => {
         console.log('user:', e1, 'pass:', e2);
