@@ -13,7 +13,7 @@ const apiRouter = require('./routes/api');
 const authRouter = require('./routes/auth');
 
 if (process.env.NODE_ENV === 'production') {
-  app.us(express.static(path.resolve(__dirname, '../dist')))
+  app.use(express.static(path.resolve(__dirname, '../dist')))
 }
 
 app.get('/', (req, res) => {
