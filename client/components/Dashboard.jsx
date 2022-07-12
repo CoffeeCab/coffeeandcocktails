@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import DrinkCard from './DrinkCard.jsx'
+import CartItem from './CartItem.jsx'
 
 
 class Dashboard extends Component {
@@ -17,6 +18,19 @@ class Dashboard extends Component {
             drinkCards.push(<DrinkCard key={i} drinkItem={this.props.drinksList[i]}/>)
         }
 
+        const shoppingCartList = [];
+
+        for(let i = 1; i < this.props.drinksList.length+1; i++){
+          // console.log(localStorage.getItem(JSON.stringify(i)))
+          console.log(typeof parseInt(JSON.parse((localStorage.getItem(localStorage.key(i)))).total))
+          let v = parseInt(JSON.parse((localStorage.getItem(localStorage.key(i)))).total);
+          console.log('v: ', v)
+          if(v){
+          // if(parseInt(JSON.parse((localStorage.getItem(localStorage.key(i)))).total) > 0){
+            console.log('this ran')
+            shoppingCartList.push(<CartItem key={i + 'shoppingCartItem'} shoppingCartItem={this.props.drinksList[i]}/>)
+          }
+        }
         return (
         <div>
           <h1>Hey this is the dashboard/hompage</h1>
@@ -25,7 +39,10 @@ class Dashboard extends Component {
           <Link to='/login'>Sign out</Link>
           <div className="drinksDisplay">
             {drinkCards}
-          </div>      
+          </div> 
+        <div className="dashboardCartDisplay">
+            {shoppingCartList}
+          </div>     
         </div>
         )
     }

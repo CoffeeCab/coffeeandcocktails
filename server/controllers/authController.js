@@ -3,18 +3,23 @@ const cookieParser = require('cookie-parser');
 
 const authController = {};
 
+// middleware for verifying 
 authController.verifyUser = (req,res, next) => {
   console.log('I am at verifyUser');
   console.log(req.body);
 
   // desctructing user, pass from request body
-  const { id, password } = req.body;
+  const { username, password } = req.body;
 
 
 }
 
-authController.tokenChecking = (req,res,next) => {
+authController.test = (req, res, next) => {
+  console.log('testing auth middleware')
+}
 
-  if(req.cookie.)
+// authController.tokenChecking = (req,res,next) => {
 
-} 
+//   if(req.cookie.)
+
+// } 

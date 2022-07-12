@@ -21,7 +21,7 @@ class SignUp extends Component {
             <br></br>
             <input className="input" id="newPassword" placeholder="Enter Password" onChange={ newPasswordInput }></input>
             <br></br>
-            <button id="signup" onClick={ () => console.log(`username is '${newUsername}' & password is '${newPassword}'`)}>Sign Up</button>
+            <button className="loginButton" id="signup" onClick={ () => console.log(`username is '${newUsername}' & password is '${newPassword}'`)}>Sign Up</button>
             <br></br>
             <Link to='/dashboard'>Click here to sign up</Link>
             </div>)

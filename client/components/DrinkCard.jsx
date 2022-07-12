@@ -28,7 +28,7 @@ class DrinkCard extends Component {
                         itemObj.total = newTotal.toString()
                         localStorage.setItem(JSON.stringify(this.props.drinkItem.id), JSON.stringify(itemObj))
                     } 
-                    //If it doesn't
+                    //If it isn't in the cart.
                     else {
                         const itemObj = {
                             id: this.props.drinkItem.id,
@@ -40,7 +40,22 @@ class DrinkCard extends Component {
                         localStorage.setItem(JSON.stringify(this.props.drinkItem.id), JSON.stringify(itemObj))
                     }
                     }}>Add to cart</button>
-                <button className="deleteButton" onClick={() => removeFromCart(e)}>Remove from cart</button>
+                <button className="deleteButton" onClick={() => {
+                     //If the item already exists in the cart
+                     if(parseInt(JSON.parse(localStorage.getItem(JSON.stringify(this.props.drinkItem.id))).total) > 0){
+                        console.log('item found')
+                        const itemObjStr = localStorage.getItem(JSON.stringify(this.props.drinkItem.id));
+                        const itemObj = JSON.parse(itemObjStr)
+                        let newTotal = parseInt(itemObj.total) - 1;
+                        console.log('newTotal: ', newTotal)
+                        itemObj.total = newTotal.toString()
+                        localStorage.setItem(JSON.stringify(this.props.drinkItem.id), JSON.stringify(itemObj))
+                    } //If it isn't in the cart.
+                    else {
+                        console.log('No items of this type added to cart.')
+                    }
+                   }
+                   }>Remove from cart</button>
             </div>
         ) 
     }
