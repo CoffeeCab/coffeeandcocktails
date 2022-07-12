@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import GAuth from './GAuth.jsx'
 
 let username;
 const usernameInput = e => {
@@ -17,14 +18,15 @@ class Login extends Component {
 
     render(){
         return (
-        <div>
+        <div className="inputBox">
           <h1>Welcome to Coffee & Cocktails!</h1>
-          <input id="username" placeholder="Username" onChange={ usernameInput }></input>
+          <input className="input" id="username" placeholder="Username" onChange={ usernameInput } ></input>
           <br></br>
-          <input type="password" id="password" placeholder="Password" onChange={ passwordInput }></input>
+          <input className="input" type="password" id="password" placeholder="Password" onChange={ passwordInput }></input>
           <br></br>
-          <button id="login" onClick={ () => console.log(`username is '${username}' & password is '${password}'`)}>Log In</button>
+          <button className="loginButton" id="login" onClick={ () => this.props.onBoxClick(username, password) }>Log In</button>
           <br></br>
+          <GAuth />
           <Link to='/signup'>Don't have an account?</Link>
         </div>)
     }

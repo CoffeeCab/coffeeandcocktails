@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const PORT  = 3000;
+const session = require("express-session");
+const passport = require("passport");
 
 const app = express();
 
@@ -17,12 +19,23 @@ app.get('/', (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../index.html'))
 });
 
+//for google oauth
+app.set("view engine", "ejs");
+
+app.use(
+  session({
+    resave: false,
+    saveUninitialized: true,
+    secret: "SECRET",
+  })
+);
+//passport
+app.use(passport.initialize());
+app.use(passport.session());
+//
+
 // for signup & login
 app.use('/api', apiRouter);
-
-// checkout 
-// cart  
-// menu page 
 
 
 // catch-all handler for any requests to an unknown route
