@@ -35,15 +35,14 @@ module.exports = {
     })
   ],
   devServer: {
-    historyApiFallback: true,
-  },
-  devServer: {
     static: {
       directory: path.join(__dirname)
     },
+    open: true,
     port: 8080, 
     compress: true,
     hot: true,
+    historyApiFallback: true,
     proxy: {
       '/api': 'http://localhost:3000'
     }

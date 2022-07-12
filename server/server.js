@@ -10,9 +10,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const apiRouter = require('./routes/api');
+const authRouter = require('./routes/auth');
 
 if (process.env.NODE_ENV === 'production') {
-  app.us(express.static(path.resolve(__dirname, '../dist')))
+  app.use(express.static(path.resolve(__dirname, '../dist')))
 }
 
 app.get('/', (req, res) => {
@@ -33,6 +34,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 //
+
+// for OAuth authentication
+app.use('/auth', authRouter);
 
 // for signup & login
 app.use('/api', apiRouter);
