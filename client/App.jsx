@@ -71,7 +71,6 @@ class App extends Component {
                 {
                 id: '6',
                 item: 'Jenna\'s Jungle Juice',
-                // photo: 'https://i5.walmartimages.com/asr/4a9cbbb8-16b9-48a0-b7ea-a38ed2e722c9_1.336fd305c7db00402ef810d3ed0fc443.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF',
                 photo: 'https://i5.walmartimages.com/asr/4a9cbbb8-16b9-48a0-b7ea-a38ed2e722c9_1.336fd305c7db00402ef810d3ed0fc443.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF',
                 price: '140',
                 total: '0'
