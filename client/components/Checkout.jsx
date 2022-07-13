@@ -44,11 +44,9 @@ class Checkout extends Component {
           <br></br>
           <input className='input' id='address' placeholder='Enter address here' onChange={ addressInput }></input>
           <br></br>
-          <button onClick={() => localStorage.clear()}>Order (for demo)</button>
+          <Link id='successLink' to='/success'>Click on the button to order your coffee!</Link>
           <br></br>
-          <Link to='/success'>Click on the button to order your coffee!</Link>
-          <br></br>
-          <Link to='/login'>Sign out</Link>
+          <Link id='loginLink' to='/login'>Sign out</Link>
           <br></br>
           <PayPalScriptProvider options={{ "client-id": "test" }}>
             <PayPalButtons style={{ layout: "horizontal" }} />

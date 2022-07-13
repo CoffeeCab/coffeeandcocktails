@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 class Success extends Component {
     render(){
+      localStorage.clear();
         return (
         <div>
           <h1>Woo! Coffee is on it's way!</h1>
