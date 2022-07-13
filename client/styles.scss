@@ -82,16 +82,22 @@ h1 {
     border-radius: 0.25rem;
 }
 
+
+
 .register {
     font-size: 1rem;
     padding-top: 15px;
 }
 
 .drinkCard {
-    width: 15%;
-    height: 15%;
+    display: flex;
+    flex-direction: row;
+    -webkit-box-flex: 0;
+    width: 30%;
+    margin-left: 10px;
+    // height: 15%;
     margin: 30px;
-    min-width: 200px;
+    // min-width: 200px;
 }
 
 .drinkImg {
@@ -104,4 +110,5 @@ h1 {
 .drinksDisplay {
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
 }

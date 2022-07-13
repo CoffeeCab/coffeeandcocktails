@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-class CartItem extends Component {
+class CheckoutItem extends Component {
     constructor(props){
         super(props);  
         this.state = {
@@ -24,4 +24,4 @@ class CartItem extends Component {
     }
 }
 
-export default CartItem;
+export default CheckoutItem;

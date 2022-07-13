@@ -17,14 +17,15 @@ class DrinkCard extends Component {
                 <img className="drinkImg" src={this.props.drinkItem.photo}></img>
                 <p>${this.props.drinkItem.price}</p>
                 <button className="addButton" onClick={() => {
-                    console.log("hey")
+                    console.log('drink card comp. drinkItemID:', this.props.drinkItem.id);
+                    // console.log("hey")
                     //If the item already exists in the cart
                     if(localStorage.getItem(JSON.stringify(this.props.drinkItem.id))){
-                        console.log('item found')
+                        // console.log('item found')
                         const itemObjStr = localStorage.getItem(JSON.stringify(this.props.drinkItem.id));
                         const itemObj = JSON.parse(itemObjStr)
                         let newTotal = parseInt(itemObj.total) + 1;
-                        console.log('newTotal: ', newTotal)
+                        // console.log('newTotal: ', newTotal)
                         itemObj.total = newTotal.toString()
                         localStorage.setItem(JSON.stringify(this.props.drinkItem.id), JSON.stringify(itemObj))
 

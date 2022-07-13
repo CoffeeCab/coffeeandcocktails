@@ -19,7 +19,7 @@ class Login extends Component {
     render(){
         return (
         <div className="inputBox">
-          <h1>Welcome to Coffee & Cocktails!</h1>
+          <h1>Welcome to Coffee Cab!</h1>
           <input className="input" id="username" placeholder="Username" onChange={ usernameInput } ></input>
           <br></br>
           <input className="input" type="password" id="password" placeholder="Password" onChange={ passwordInput }></input>
