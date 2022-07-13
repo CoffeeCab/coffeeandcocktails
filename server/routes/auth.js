@@ -10,8 +10,7 @@ const router = express.Router();
 router.get('/google/success', (req, res) => {
   console.log('succeed', userProfile())
   res.send(userProfile())
-}
-);
+});
 router.get('/google/error', (req, res) => res.send('error logging in'));
 
 //oauth
