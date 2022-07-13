@@ -31,13 +31,14 @@ userController.checkUser = async (req, res, next) => {
 }
 
 userController.addUser = async (req, res, next) => {
-  const { username, password } = req.body;
-  const value = [username, password];
+  const { username, password, firstName, lastName, email, address, city, state, zip } = req.body;
+  const value = [username, password, firstName, lastName, email, address, city, state, zip];
 
-  const query = 'INSERT INTO user (username, password) VALUES ($1, $2) RETURNING *';
+  const query = 'INSERT INTO public.user (username, password, first_name, last_name, email, address, city, state, zip_code) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *';
 
   try {
     const data = await db.query(query, value);
+    console.log('db data: ', data);
     res.locals.data = {};
     res.locals.data.user = data.rows[0];
     return next();

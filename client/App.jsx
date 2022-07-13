@@ -14,7 +14,14 @@ class App extends Component {
             currentUser: {
                 id: '',
                 user: '',
-                password: ''
+                password: '',
+                firstName: '',
+                lastName: '',
+                email: '',
+                address: '',
+                city: '',
+                state: '',
+                zip: ''
             }, 
             randomVar: true,
             //Note! The browser's Local Storage can only store strings. So make sure id, price, & item are strings.
@@ -28,20 +35,73 @@ class App extends Component {
                 },
                 {
                 id: '1',
+                item: 'Margarita',
+                photo: 'https://images.absolutdrinks.com/drink-images/Raw/Absolut/c8bc404c-fc30-4ec8-a9a5-0dca3913bbbb.jpg',
+                price: '12',
+                total: '0'
+                },
+                {
+                id: '2',
                 item: 'Cookie Cake Cocktail',
                 photo: 'https://i.pinimg.com/originals/d6/c5/35/d6c535f8bfa8497e0525e356d25efb65.jpg',
                 price: '15',
                 total: '0'
                 },
                 {
-                id: '2',
+                id: '3',
                 item: 'Black Coffee',
                 photo: 'https://img.buzzfeed.com/buzzfeed-static/static/2017-06/29/19/asset/buzzfeed-prod-fastlane-01/sub-buzz-12062-1498777435-1.jpg',
-                price: '0.5',
+                price: '0.50',
+                total: '0'
+                },
+                {
+                id: '4',
+                item: 'Caffe Mocha',
+                photo: 'https://www.caffesociety.co.uk/assets/recipe-images/mocha-small.jpg',
+                price: '11',
+                total: '0'
+                },
+                {
+                id: '5',
+                item: 'Iced McCafe Latte (please sponsor us)',
+                photo: 'https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-iced-latte-1:1-3-product-tile-desktop?wid=765&hei=472&dpr=off',
+                price: '8',
+                total: '0'
+                },
+                {
+                id: '6',
+                item: 'Jenna\'s Jungle Juice',
+                // photo: 'https://i5.walmartimages.com/asr/4a9cbbb8-16b9-48a0-b7ea-a38ed2e722c9_1.336fd305c7db00402ef810d3ed0fc443.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF',
+                photo: 'https://i5.walmartimages.com/asr/4a9cbbb8-16b9-48a0-b7ea-a38ed2e722c9_1.336fd305c7db00402ef810d3ed0fc443.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF',
+                price: '140',
+                total: '0'
+                },
+                {
+                id: '7',
+                item: 'Ryan McDaddy',
+                photo: 'https://static.vecteezy.com/system/resources/previews/005/476/277/non_2x/under-18-forbidden-round-icon-sign-illustration-eighteen-or-older-persons-adult-content-18-plus-only-rating-isolated-on-white-background-free-vector.jpg',
+                price: '69',
+                total: '0'
+                },
+                {
+                id: '8',
+                item: 'Inflation Hydration',
+                photo: 'https://imageio.forbes.com/specials-images/imageserve/6063683bb1ca638d7f7b69f8/Businessman-inflating-dollar-sign-balloon-with-tire-pump/960x0.jpg?format=jpg&width=960',
+                price: '3000',
+                total: '0'
+                },
+                {
+                id: '9',
+                item: 'Laura, get me a bottle',
+                photo: 'https://www.clearviewtreatment.com/wp-content/uploads/2016/11/iStock_12143618_LARGE.jpg',
+                price: '12',
                 total: '0'
                 },
             ]
-        }
+        },
+        this.onLoginBoxClick = this.onLoginBoxClick.bind(this)
+
+        this.onSignUpBoxClick = this.onSignUpBoxClick.bind(this)
         // this.usernameInput = this.usernameInput.bind(this);
         // this.passwordInput = this.passwordInput.bind(this);
     }
@@ -77,7 +137,7 @@ class App extends Component {
     componentDidMount(){
         for(let i = 0; i < this.state.drinksList.length; i++){
             let drinkItem = this.state.drinksList[i]
-            console.log(drinkItem)
+            // console.log(drinkItem)
             let drinkId = drinkItem.id;
             const itemObj = {
                 id: drinkItem.id,
@@ -88,15 +148,85 @@ class App extends Component {
             };
             localStorage.setItem(JSON.stringify(drinkId), JSON.stringify(itemObj));
         }
+
+        if (document.cookie) {
+            //WHy aer we resetting user? :(
+                // document.cookie = "firstName=John; lastName=Smith;expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/"
+            const cookieArr = document.cookie.split(';')
+            let userFirst;
+            let userLast;
+            cookieArr.forEach(cookie => {
+                if (cookie.includes('firstName')) userFirst = cookie.split('=')[1];
+                if (cookie.includes('lastName')) userLast = cookie.split('=')[1];
+            })
+            this.setState({
+                currentUser: {
+                    firstName: userFirst,
+                    lastName: userLast
+                }
+            })
+
+        //     currentUser: {
+        //         id: '',
+        //         user: '',
+        //         password: '',
+        //         firstName: '',
+        //         lastName: '',
+        //         email: '',
+        //         address: '',
+        //         city: '',
+        //         state: '',
+        //         zip: ''
+        // }
+    }}
+    
+    onLoginBoxClick = (e1, e2) => {
     }
 
-    onBoxClick = (e1, e2) => {
-        console.log('user:', e1, 'pass:', e2);
+    onSignUpBoxClick = (e1, e2, e3, e4, e5, e6, e7, e8, e9) => {
+
             this.setState({ currentUser: {
                 user: e1,
-                password: e2
+                password: e2, 
+                firstName: e3,
+                lastName: e4,
+                email: e5,
+                address: e6,
+                city: e7,
+                state: e8,
+                zip: e9
             } 
         })
+
+        console.log('piggy')
+
+        fetch('http://localhost:8080/api/signup', {
+            method: 'POST',
+            body: JSON.stringify({
+                username: e1,
+                password: e2,
+                firstName: e3,
+                lastName: e4,
+                email: e5,
+                address: e6,
+                city: e7,
+                state: e8,
+                zip: e9
+            }), 
+            headers: {
+                'Content-Type': 'application/json'
+        }}
+        ).then(data => data.json())
+        .then(data => {
+            console.log('user added to db: ', data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+
+        window.location = "http://localhost:8080/dashboard";
+
+
     }
 
     render(){
@@ -106,12 +236,12 @@ class App extends Component {
                     <Route
                         exact
                         path="/"
-                        element={<LoginPage user={this.state.currentUser.user} pass={this.state.currentUser.password} onBoxClick={this.onBoxClick} />}
+                        element={<LoginPage user={this.state.currentUser.user} pass={this.state.currentUser.password} onLoginBoxClick={this.onLoginBoxClick} />}
                     />
                     <Route
                         exact
                         path="/signUp"
-                        element={<SignUp newUser={this.state.currentUser.user} newPass={this.state.currentUser.password} onBoxClick={this.onBoxClick} />}
+                        element={<SignUp newUser={this.state.currentUser.user} newPass={this.state.currentUser.password} onSignUpBoxClick={this.onSignUpBoxClick} />}
                     />
                     <Route
                         exact
@@ -121,7 +251,7 @@ class App extends Component {
                     <Route
                         exact
                         path="/checkout"
-                        element={<Checkout/>}
+                        element={<Checkout drinksList={this.state.drinksList}/>}
                     />
                      <Route
                         exact
