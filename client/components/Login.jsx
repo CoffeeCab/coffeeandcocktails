@@ -16,6 +16,7 @@ const passwordInput = e => {
 
 class Login extends Component {
 
+<<<<<<< HEAD
     render(){
         return (
         <div className="inputBox">
@@ -30,6 +31,22 @@ class Login extends Component {
           <Link to='/signup'>Don't have an account?</Link>
         </div>)
     }
+=======
+  render() {
+    return (
+      <div className="inputBox">
+        <h1>Welcome to Coffee & Cocktails!</h1>
+        <input className="input" id="username" placeholder="Username" onChange={usernameInput} ></input>
+        <br></br>
+        <input className="input" type="password" id="password" placeholder="Password" onChange={passwordInput}></input>
+        <br></br>
+        <button className="loginButton" id="login" onClick={() => this.props.onBoxClick(username, password)}>Log In</button>
+        <br></br>
+        <GAuth />
+        <Link to='/signup'>Don't have an account?</Link>
+      </div>)
+  }
+>>>>>>> main
 }
 
 export default Login;
