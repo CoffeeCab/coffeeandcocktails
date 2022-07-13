@@ -102,37 +102,7 @@ class App extends Component {
         this.onLoginBoxClick = this.onLoginBoxClick.bind(this)
 
         this.onSignUpBoxClick = this.onSignUpBoxClick.bind(this)
-        // this.usernameInput = this.usernameInput.bind(this);
-        // this.passwordInput = this.passwordInput.bind(this);
     }
-
-    // componentDidMount(){
-    //     for(let i = 0; i < this.state.drinksList.length; i++){
-    //         localStorage.setItem(this.state.drinksList[i].id, JSON.stringify(this.state.drinksList[i]))
-    //     }
-    // }
-
-    // addItem = (e, itemId, itemObj) => {
-    //     let newDrinksList = this.state.drinksList 
-
-    //     const replacementObj = {};
-
-    //     Object.assign(newDrinksList[itemId], itemObj)
-
-    //     this.setState({
-    //         drinksList: drinksList(0)
-    //     })
-    // }
-      
-    // usernameInput = e => {
-    //     this.state.currentUser.user = e.target.value;
-    //     return this.state.currentUser.username;
-    //   }
-      
-    // passwordInput = e => {
-    //     this.state.currentUser.password = e.target.value;
-    //     return this.state.currentUser.password;
-    //   }  
 
     componentDidMount(){
         for(let i = 0; i < this.state.drinksList.length; i++){
@@ -165,19 +135,6 @@ class App extends Component {
                     lastName: userLast
                 }
             })
-
-        //     currentUser: {
-        //         id: '',
-        //         user: '',
-        //         password: '',
-        //         firstName: '',
-        //         lastName: '',
-        //         email: '',
-        //         address: '',
-        //         city: '',
-        //         state: '',
-        //         zip: ''
-        // }
     }}
     
     onLoginBoxClick = (e1, e2) => {

@@ -19,14 +19,12 @@ class Dashboard extends Component {
       this.setState({
         randomVar: !this.state.randomVar
             })
-      // console.log(this.state.randomVar)
     }
 
     render(){
         const drinkCards = [];
 
         for(let i = 0; i < this.props.drinksList.length; i++){
-          // console.log('each item being passed down: ', this.props.drinksList[i])
             drinkCards.push(<DrinkCard key={i} id='drinkItem' drinkItem={this.props.drinksList[i]} rerenderFunction={this.rerenderFunction}/>)
         }
 
@@ -36,36 +34,7 @@ class Dashboard extends Component {
             //Quantities are being added correctly, but 'get'd' incorrectly
 
           for(let i = 0; i < this.props.drinksList.length; i++){
-            // console.log(typeof parseInt(JSON.parse((localStorage.getItem(localStorage.key(i)))).total))
-            // console.log('json version of each key/value:', localStorage.getItem(localStorage.key(i)))
-            // console.log('parsed version of each key/value:', JSON.parse(localStorage.getItem(localStorage.key(i))))
-            // console.log('total of each key/value:', JSON.parse(localStorage.getItem(localStorage.key(i))).total)
-
-
-            // console.log('drinksList[i]: ', this.props.drinksList[i])
-
-            // console.log('JSON.parse((localStorage.getItem(localStorage.key(i)))): ', JSON.parse((localStorage.getItem(localStorage.key(i)))))
-            // console.log('JSON.parse((localStorage.getItem(localStorage.key(i)))): ', JSON.parse((localStorage.getItem(localStorage.key(i)))))
-            // console.log('i: ', i)
             try {
-              //console.log('LOOK @ THIS JSON.parse((localStorage.getItem(JSON.stringify(this.props.drinkItem.id))))): ', JSON.parse((localStorage.getItem(JSON.stringify(this.props.drinksList[i].id)))))
-              //console.log('ALSO THIS: JSON.parse((localStorage.getItem(JSON.stringify(this.props.drinkItem.id))))).total: ', JSON.parse((localStorage.getItem(JSON.stringify(this.props.drinksList[i].id))))).total
-
-               // if(JSON.parse((localStorage.getItem(localStorage.key(i))))){
-                // if(JSON.parse((localStorage.getItem(JSON.stringify(this.props.drinksList[i].id))))){
-
-                  // switch of id's happen here
-                  // let v = parseInt(JSON.parse((localStorage.getItem(localStorage.key(i)))).total);
-                  // let v = parseInt(JSON.parse((localStorage.getItem(localStorage.getItem(`${i}`))).total));
-    
-                  // if(v){
-                  // if(parseInt(JSON.parse((localStorage.getItem(localStorage.key(i)))).total) > 0){
-                    // console.log('this ran')
-
-
-                    console.log('The unparsed obj value in local storage: ', (localStorage.getItem(JSON.stringify(this.props.drinksList[i].id))))
-                    console.log('The parsed obj value in local storage: ', JSON.parse((localStorage.getItem(JSON.stringify(this.props.drinksList[i].id)))))
-                    console.log('The total property in local storage: ', JSON.parse((localStorage.getItem(JSON.stringify(this.props.drinksList[i].id)))).total)
 
                     let totalProperty = JSON.parse((localStorage.getItem(JSON.stringify(this.props.drinksList[i].id)))).total;
 
@@ -78,10 +47,6 @@ class Dashboard extends Component {
               console.log('no total existed')
             }
           }
-           
-           
-          console.log('drinkCardsArray:', drinkCards);
-          console.log('shoppingCartArray:', shoppingCartList);
         return (
         <div>
           <div id='dashboardTop'>
@@ -89,7 +54,7 @@ class Dashboard extends Component {
             <div id='dashboardLinks'>
               <Link id='checkout' to='/checkout'>Checkout</Link>
               <br></br>
-              <Link id='signOut' to='/login'>Sign out</Link>
+              <Link id='signOut' to='/'>Sign out</Link>
             </div>
           </div>
           <div className="drinksDisplay">
