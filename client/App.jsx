@@ -151,22 +151,36 @@ class App extends Component {
 
         if (document.cookie) {
             //WHy aer we resetting user? :(
+                // document.cookie = "firstName=John; lastName=Smith;expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/"
             const cookieArr = document.cookie.split(';')
-            let user;
+            let userFirst;
+            let userLast;
             cookieArr.forEach(cookie => {
-                if (cookie.includes('firstName')) user = cookie;
+                if (cookie.includes('firstName')) userFirst = cookie.split('=')[1];
+                if (cookie.includes('lastName')) userLast = cookie.split('=')[1];
             })
             this.setState({
-                currentUser: 
+                currentUser: {
+                    firstName: userFirst,
+                    lastName: userLast
+                }
             })
-        }
-    }
+
+        //     currentUser: {
+        //         id: '',
+        //         user: '',
+        //         password: '',
+        //         firstName: '',
+        //         lastName: '',
+        //         email: '',
+        //         address: '',
+        //         city: '',
+        //         state: '',
+        //         zip: ''
+        // }
+    }}
     
     onLoginBoxClick = (e1, e2) => {
-        {currentUser: {
-            user: e1,
-            password: e2, 
-        }}
     }
 
     onSignUpBoxClick = (e1, e2, e3, e4, e5, e6, e7, e8, e9) => {
