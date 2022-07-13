@@ -1,6 +1,7 @@
 const passport = require('passport');
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 let userProfile;
+require('dotenv').config();
 
 passport.use(
   new GoogleStrategy(
@@ -13,7 +14,7 @@ passport.use(
     },
     function (request, accessToken, refreshToken, profile, done) {
       userProfile = profile;
-      console.log(userProfile, 'this is profile')
+      // console.log(userProfile, 'this is profile')
       return done(null, userProfile);
     }
   )
