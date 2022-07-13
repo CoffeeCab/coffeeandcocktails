@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import DrinkCard from './DrinkCard.jsx'
 import CartItem from './CartItem.jsx'
+import axios from 'axios';
 
 
 class Dashboard extends Component {
@@ -82,6 +83,13 @@ class Dashboard extends Component {
            
           console.log('drinkCardsArray:', drinkCards);
           console.log('shoppingCartArray:', shoppingCartList);
+
+          const signOut = () => {
+            console.log('in signout')
+            document.cookie.split(';').forEach(cookie => document.cookie = cookie.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`));
+            window.location=("http://localhost:8080/");
+          }
+
         return (
         <div>
           <div id='dashboardTop'>
@@ -89,7 +97,8 @@ class Dashboard extends Component {
             <div id='dashboardLinks'>
               <Link id='checkout' to='/checkout'>Checkout</Link>
               <br></br>
-              <Link id='signOut' to='/login'>Sign out</Link>
+              {/* <Link id='signOut' to='/login'>Sign out</Link> */}
+              <button id="signOut" onClick={() => signOut()}></button>
             </div>
           </div>
           <div className="drinksDisplay">

@@ -41,11 +41,18 @@ app.use(passport.session());
 
 const apiRouter = require('./routes/api');
 const authRouter = require('./routes/auth');
+const cookieController = require('./controllers/cookieController');
 // for OAuth authentication
 app.use('/auth', authRouter);
 
 // for signup & login
 app.use('/api', apiRouter);
+
+app.use('/signout', (req, res) => {
+  console.log('hi');
+  document.cookie.split(';').forEach(cookie => document.cookie = cookie.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`));
+  res.status(200).send('logged out');
+});
 
 // catch-all handler for any requests to an unknown route
 app.use('*', (req, res) => {
