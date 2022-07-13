@@ -1,11 +1,6 @@
 const { Pool } = require('pg');
 
-<<<<<<< HEAD
-
-const pool = new Pool ({
-=======
 const pool = new Pool({
->>>>>>> main
   connectionString: process.env.PG_URI
 });
 
