@@ -98,7 +98,7 @@ class Dashboard extends Component {
               <Link id='checkout' to='/checkout'>Checkout</Link>
               <br></br>
               {/* <Link id='signOut' to='/login'>Sign out</Link> */}
-              <button id="signOut" onClick={() => signOut()}></button>
+              <button id="signOut" onClick={() => signOut()}> Sign Out </button>
             </div>
           </div>
           <div className="drinksDisplay">
