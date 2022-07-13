@@ -15,7 +15,7 @@ class DrinkCard extends Component {
             <div className="drinkCard">
                 <h1>{this.props.drinkItem.item}</h1>
                 <img className="drinkImg" src={this.props.drinkItem.photo}></img>
-                <p>${this.props.drinkItem.price}</p>
+                <p id='price'>${this.props.drinkItem.price}</p>
                 <button className="addButton" onClick={() => {
                     console.log('drink card comp. drinkItemID:', this.props.drinkItem.id);
                     // console.log("hey")

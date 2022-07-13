@@ -1,7 +1,7 @@
 html {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    background: #f6f7fc;
+    background: #f0d8cd;
     background-image: url('https://goingplaces.malaysiaairlines.com/wp-content/uploads/2019/03/32283963_l-1024x680.jpg') no-repeat;
 }
 
@@ -9,7 +9,11 @@ body {
     font-size: 1.5rem;
     font-weight: 400;
     color: #212529;
-    // text-align: left;
+}
+
+:root {
+    --price-tag-background: rgba(0, 0, 0, 0.3);
+    --price-tag-height: 2rem;
 }
 
 h1 {
@@ -28,7 +32,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #f6f7fc;
+    background: #f0d8cd;
 }
 
 .inputBox {
@@ -82,6 +86,25 @@ h1 {
     border-radius: 0.25rem;
 }
 
+.loginButton:hover {
+	// background:linear-gradient(to bottom, #f69856 5%, #fb771a 100%);
+	// background-color:#f69856;
+    background:linear-gradient(to bottom, #d05803 5%, #fb771a 100%);
+	background-color:#d05803;
+}
+.loginButton:active {
+	position:relative;
+	top:1px;
+}
+
+.GAuthContainer {
+    margin-bottom: 20px;
+}
+
+#signup.loginButton {
+    margin-bottom: 20px;
+}
+
 .register {
     font-size: 1rem;
     padding-top: 15px;
@@ -100,20 +123,227 @@ h1 {
 
 @media screen and (min-width: 568px) {
     .drinkCard {
-        display: grid;
-        grid-template-rows: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-rows: repeat(3, minmax(240px, 1fr));
+    }
+    .addButton {
+        
+        min-width: 25%;
+        font-size: 0.9rem;
+        justify-content: center;
+        align-items: center;
     }
 }
 
-.drinkImg {
-    width: 80%;
-    height: 80%;
-    min-width: 150px;
+#dashboardTop {
+    display: flex;
+    justify-content: space-between;
+}
 
+#dashboardLinks {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: space-between;
+}
+
+// #checkout {
+//     border: 2px solid #04AA6D;
+//     padding: 10px 20px;
+//     text-align: center;
+//     text-decoration: none;
+//     display: inline-block;
+//     font-size: 16px;
+//     margin-left: 20px;
+//     margin-right: 20px;
+// }
+
+$cross-fade-border-width: 2px;
+$cross-fade-border-color: black;
+$sec-cross-fade-border-color: black;
+$cross-fade-button-padding: 16px 28px;
+$cross-fade-text-color: black;
+$sec-cross-fade-text-color: white;
+$cross-fade-border-radius: 0px;
+$cross-fade-background: white;
+$sec-cross-fade-background: #666;
+$cross-fade-transition-time: 0.75s;
+
+#checkout, #signOut, #successLink, #loginLink {
+  margin-right: 20px;
+  display: inline-block;
+  padding: $cross-fade-button-padding;
+  border: $cross-fade-border-width $cross-fade-border-color solid;
+  text-align: center;
+  text-decoration: none;
+  color: $cross-fade-text-color;
+  position: relative;
+  overflow: hidden;
+  transition: color $cross-fade-transition-time ease-in-out;
+  z-index: 1;
+  border-radius: $cross-fade-border-radius;
+  
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -25%;
+    width: 150%;
+    height: 100%;
+    background: rgba($sec-cross-fade-background, 0.5);
+    transition: transform $cross-fade-transition-time ease-in-out;
+    z-index: -1;
+  }
+  
+  &:before {
+    transform: translate3d(100%, 0, 0) skew(20deg);
+    transform-origin: 0 0;
+  }
+  
+  &:after {
+    transform: translate3d(-100%, 0, 0) skew(20deg);
+    transform-origin: 100% 100%;
+  }
+  
+  &:hover {
+    color: $sec-cross-fade-text-color;
+    &:before,
+    &:after {
+      transform: translate3d(0, 0, 0) skew(20deg);
+    }
+  }
+}
+
+.drinkImg {
+    width: 70%;
+    height: 70%;
+    border-radius: 500px;
+    // max-width: 300px;
+    // min-width: 150px;
 }
 
 .drinksDisplay {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
+    justify-content: center;
+}
+
+#price {
+    
+    margin-top: 20px;
+    width: 71%;
+    background: var(--price-tag-background);
+    color: #fff;
+
+    /* Center the price */
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    /* Used to position the triangle */
+    position: relative;
+
+    /* Size */
+    height: var(--price-tag-height);
+
+    /* Spacing */
+    padding: 0.25rem 0.5rem;
+}
+
+#price::before {
+    content: '';
+
+    border-color: transparent var(--price-tag-background) transparent transparent;
+    border-style: solid;
+    border-width: calc(var(--price-tag-height) / 2) calc(var(--price-tag-height) / 2)
+        calc(var(--price-tag-height) / 2) 0rem;
+
+    /* Position */
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    transform: translate(-100%, 0px);
+}
+
+/* The dot */
+#price::after {
+    content: '';
+
+    /* Make it like a cirle */
+    background: #fff;
+    border-radius: 9999rem;
+
+    /* Position */
+    left: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(-0.5rem, -50%);
+
+    /* Size */
+    height: 0.5rem;
+    width: 0.5rem;
+}
+
+.addButton {
+    height: 70%;
+    width: 70%;
+    background: #00a862;
+    border-radius: 500px;
+    // box-shadow: 0 0 6px rgb(0 0 0 / 24%), 0 8px 12px rgb(0 0 0 / 14%);
+    color: #fff;
+    display: inline-block;
+    font-size: 1.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+    overflow: hidden;
+    padding: 18px 2.4rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition-duration: .2s;
+    transition-property: transform, box-shadow, width,height;
+    transition-timing-function: ease;
+    z-index: 1;
+}
+.addButton:hover {
+	background:linear-gradient(to bottom, #12ad01 5%, #15bc03 100%);
+	background-color:#12ad01;
+}
+.addButton:active {
+	position:relative;
+	top:1px;
+}
+
+.deleteButton {
+    align-items: center;
+    justify-content: center;
+    height: 70%;
+    width: 70%;
+    margin-top: 10px;
+    background: #a13127;
+    border-radius: 500px;
+    // box-shadow: 0 0 6px rgb(0 0 0 / 24%), 0 8px 12px rgb(0 0 0 / 14%);
+    color: #fff;
+    display: inline-block;
+    font-size: 1.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+    overflow: hidden;
+    padding: 18px 2.4rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition-duration: .2s;
+    transition-property: transform, box-shadow, width,height;
+    transition-timing-function: ease;
+    z-index: 1;
+}
+.deleteButton:hover {
+	background:linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+	background-color:#f24437;
+}
+.deleteButton:active {
+	position:relative;
+	top:1px;
 }
