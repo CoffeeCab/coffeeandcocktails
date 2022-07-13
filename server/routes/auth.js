@@ -7,18 +7,22 @@ const router = express.Router();
 
 //passport 
 
-router.get('/success', (req, res) => res.send(userProfile));
-router.get('/error', (req, res) => res.send('error logging in'));
+router.get('/google/success', (req, res) => {
+  console.log('succeed', userProfile())
+  res.send(userProfile())
+});
+router.get('/google/error', (req, res) => res.send('error logging in'));
 
 //oauth
-router.get('/google', authController.auth1, (req, res) => {
+router.get('/google', passport.authenticate('google', { scope: ['email', 'profile'] }), (req, res) => {
   return res.status(200).send('hi');
 });
 
-router.get('/google/callback', authController.auth2, (req, res) => {
-    //successful authentication, redirect success.
-    return res.status(300).redirect("/success");
-  }
+router.get('/google/callback', passport.authenticate("google", { successRedirect: "success", failureRedirect: "error" }), (req, res) => {
+  //successful authentication, redirect success.
+  console.log('I am after passport')
+  return res.status(300)//.redirect("auth/success");
+}
 );
 
 module.exports = router;
