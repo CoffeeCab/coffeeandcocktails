@@ -14,7 +14,14 @@ class App extends Component {
             currentUser: {
                 id: '',
                 user: '',
-                password: ''
+                password: '',
+                firstName: '',
+                lastName: '',
+                email: '',
+                address: '',
+                city: '',
+                state: '',
+                zip: ''
             }, 
             randomVar: true,
             //Note! The browser's Local Storage can only store strings. So make sure id, price, & item are strings.
@@ -91,7 +98,10 @@ class App extends Component {
                 total: '0'
                 },
             ]
-        }
+        },
+        this.onLoginBoxClick = this.onLoginBoxClick.bind(this)
+
+        this.onSignUpBoxClick = this.onSignUpBoxClick.bind(this)
         // this.usernameInput = this.usernameInput.bind(this);
         // this.passwordInput = this.passwordInput.bind(this);
     }
@@ -138,14 +148,71 @@ class App extends Component {
             };
             localStorage.setItem(JSON.stringify(drinkId), JSON.stringify(itemObj));
         }
+
+        if (document.cookie) {
+            //WHy aer we resetting user? :(
+            const cookieArr = document.cookie.split(';')
+            let user;
+            cookieArr.forEach(cookie => {
+                if (cookie.includes('firstName')) user = cookie;
+            })
+            this.setState({
+                currentUser: 
+            })
+        }
+    }
+    
+    onLoginBoxClick = (e1, e2) => {
+        {currentUser: {
+            user: e1,
+            password: e2, 
+        }}
     }
 
-    onBoxClick = (e1, e2) => {
+    onSignUpBoxClick = (e1, e2, e3, e4, e5, e6, e7, e8, e9) => {
+
             this.setState({ currentUser: {
                 user: e1,
-                password: e2
+                password: e2, 
+                firstName: e3,
+                lastName: e4,
+                email: e5,
+                address: e6,
+                city: e7,
+                state: e8,
+                zip: e9
             } 
         })
+
+        console.log('piggy')
+
+        fetch('http://localhost:8080/api/signup', {
+            method: 'POST',
+            body: JSON.stringify({
+                username: e1,
+                password: e2,
+                firstName: e3,
+                lastName: e4,
+                email: e5,
+                address: e6,
+                city: e7,
+                state: e8,
+                zip: e9
+            }), 
+            headers: {
+                'Content-Type': 'application/json'
+        }}
+        ).then(data => data.json())
+        .then(data => {
+            console.log('user added to db: ', data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+
+        window.location = "http://localhost:8080/dashboard";
+
+
     }
 
     render(){
@@ -155,12 +222,12 @@ class App extends Component {
                     <Route
                         exact
                         path="/"
-                        element={<LoginPage user={this.state.currentUser.user} pass={this.state.currentUser.password} onBoxClick={this.onBoxClick} />}
+                        element={<LoginPage user={this.state.currentUser.user} pass={this.state.currentUser.password} onLoginBoxClick={this.onLoginBoxClick} />}
                     />
                     <Route
                         exact
                         path="/signUp"
-                        element={<SignUp newUser={this.state.currentUser.user} newPass={this.state.currentUser.password} onBoxClick={this.onBoxClick} />}
+                        element={<SignUp newUser={this.state.currentUser.user} newPass={this.state.currentUser.password} onSignUpBoxClick={this.onSignUpBoxClick} />}
                     />
                     <Route
                         exact

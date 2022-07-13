@@ -41,17 +41,15 @@ app.use('/auth', authRouter);
 // for signup & login
 app.use('/api', apiRouter);
 
-
 // catch-all handler for any requests to an unknown route
 app.use('*', (req, res) => {
   return res.status(404).send('Not found');
 });
 
-
 // global handler 
 app.use((err, req, res, next) => {
   const defaultErr = {
-    log: 'Express error hanlder caught unknown middleware error',
+    log: 'Express error handler caught unknown middleware error',
     status: 500,
     message: { err: 'An error occured' },
   };

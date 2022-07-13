@@ -1,10 +1,8 @@
 const { Pool } = require('pg');
 
-const { PG_URI } =
-  "postgres://molymici:mrDImwVssY_SYmaYmnE_XB1QLV8QO_pt@heffalump.db.elephantsql.com/molymici";
 
 const pool = new Pool ({
-  connectionString: PG_URI
+  connectionString: process.env.PG_URI
 });
 
 module.exports = {
