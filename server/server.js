@@ -3,10 +3,13 @@ const path = require('path');
 const PORT = 3000;
 const session = require("express-session");
 const passport = require("passport");
+const cookieParser = require('cookie-parser');
+
 require('dotenv').config();
 
 const app = express();
 
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -16,15 +19,8 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use('/', express.static(path.join(__dirname, '..')));
 
-// app.get('/', (req, res) => {
-//   return res.status(200).sendFile(path.join(__dirname, '../index.html'))
-// });
-
-app.use('/', (req, res) => {
-  if (res.locals.userProfile) {
-    console.log('sending', res.locals.userProfile);
-    return res.status(200).send(res.locals.userProfile);
-  }
+app.get('/', (req, res) => {
+  return res.status(200).sendFile(path.join(__dirname, '../index.html'))
 });
 
 //for google oauth
@@ -37,6 +33,7 @@ app.use(
     secret: "SECRET",
   })
 );
+
 //passport
 app.use(passport.initialize());
 app.use(passport.session());

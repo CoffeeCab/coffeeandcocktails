@@ -3,7 +3,6 @@ const passport = require('passport');
 const userProfile = require("../../config/passport-setup");
 const db = require('../models/pg');
 require('dotenv').config();
-// const cookieParser = require('cookie-parser');
 
 const authController = {};
 
@@ -21,19 +20,19 @@ authController.verifyUser = async (req, res, next) => {
     const data = await db.query(query);
 
     if (data === undefined) {
-      const query2 = `INSERT INTO public.user (first_name, last_name, google_id, email) VALUES (${familyName}, ${givenName}, ${id}, ${email})`;
+      const query2 = `INSERT INTO public.user (first_name, last_name, google_id, email) VALUES (${givenName}, ${familyName}, ${id}, ${email})`;
       await db.query(query2);
       res.locals.userProfile = {
-        firstName: familyName,
-        lastName: givenName,
+        firstName: givenName,
+        lastName: familyName,
         email: email,
       }
       return next();
     }
     else {
       res.locals.userProfile = {
-        firstName: familyName,
-        lastName: givenName,
+        firstName: givenName,
+        lastName: familyName,
         email: email,
       }
       return next();
