@@ -84,14 +84,18 @@ class Dashboard extends Component {
           console.log('shoppingCartArray:', shoppingCartList);
         return (
         <div>
-          <h1>What would you like to drink?</h1>
-          <Link id='checkout' to='/checkout'>Checkout</Link>
-          <br></br>
-          <Link id='signOut' to='/login'>Sign out</Link>
+          <div id='dashboardTop'>
+            <h1>What would you like to drink?</h1>
+            <div id='dashboardLinks'>
+              <Link id='checkout' to='/checkout'>Checkout</Link>
+              <br></br>
+              <Link id='signOut' to='/login'>Sign out</Link>
+            </div>
+          </div>
           <div className="drinksDisplay">
             {drinkCards}
           </div> 
-        <div className="dashboardCartDisplay">
+          <div className="dashboardCartDisplay">
             {shoppingCartList}
           </div>     
         </div>
