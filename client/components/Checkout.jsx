@@ -15,15 +15,20 @@ class Checkout extends Component {
       const finalCheckoutList = [];
 
       let totalBill = 0;
+      let totalItems = 0;
         for(let i = 0; i < this.props.drinksList.length; i++){
             try {
                 console.log('The unparsed obj value in local storage: ', (localStorage.getItem(JSON.stringify(this.props.drinksList[i].id))))
                 console.log('The parsed obj value in local storage: ', JSON.parse((localStorage.getItem(JSON.stringify(this.props.drinksList[i].id)))))
                 console.log('The total property in local storage: ', JSON.parse((localStorage.getItem(JSON.stringify(this.props.drinksList[i].id)))).total)
                 let totalProperty = JSON.parse((localStorage.getItem(JSON.stringify(this.props.drinksList[i].id)))).total;
+                let priceProperty = JSON.parse((localStorage.getItem(JSON.stringify(this.props.drinksList[i].id)))).price;
                 if(parseInt(totalProperty) > 0) {
+                  console.log('totalProperty: ', Number(totalProperty))
+                  console.log('typeof totalProperty: ', typeof Number(totalProperty))
                   console.log('frog')
-                  totalBill += parseInt(totalProperty);
+                  totalItems += parseInt(totalProperty);
+                  totalBill += (Number(totalProperty) * Number(priceProperty))
                   finalCheckoutList.push(<CheckoutItem key={i + 'shoppingCartItem'} shoppingCartItem={this.props.drinksList[i]}/>)
                 }
             } catch {
@@ -34,7 +39,8 @@ class Checkout extends Component {
         return (
         <div id='checkoutComponent'>
           <h1>Hey this is the checkout</h1>
-          <h3>Your total is ${totalBill} USD</h3>
+          <h3>There are {totalItems} items in your shopping cart.</h3>
+          <h3>Your total bill is ${totalBill} USD</h3>
           <br></br>
           <input className='input' id='address' placeholder='Enter address here' onChange={ addressInput }></input>
           <br></br>
@@ -47,6 +53,7 @@ class Checkout extends Component {
           <PayPalScriptProvider options={{ "client-id": "test" }}>
             <PayPalButtons style={{ layout: "horizontal" }} />
           </PayPalScriptProvider>
+          {finalCheckoutList}
         </div>
         
         )

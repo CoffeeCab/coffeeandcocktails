@@ -82,22 +82,27 @@ h1 {
     border-radius: 0.25rem;
 }
 
-
-
 .register {
     font-size: 1rem;
     padding-top: 15px;
 }
 
 .drinkCard {
-    display: flex;
-    flex-direction: row;
+    // display: flex;
+    // flex-direction: row;
     -webkit-box-flex: 0;
     width: 30%;
     margin-left: 10px;
     // height: 15%;
     margin: 30px;
     // min-width: 200px;
+}
+
+@media screen and (min-width: 568px) {
+    .drinkCard {
+        display: grid;
+        grid-template-rows: repeat(auto-fit, minmax(280px, 1fr));
+    }
 }
 
 .drinkImg {
