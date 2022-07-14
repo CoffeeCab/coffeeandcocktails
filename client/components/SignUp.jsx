@@ -90,7 +90,6 @@ class SignUp extends Component {
               newState,
               newZip ) }>Sign Up</button>
             <br></br>
-            <Link to='/dashboard'>Click here to sign up</Link>
             </div>)
     }
 }

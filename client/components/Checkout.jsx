@@ -9,6 +9,12 @@ const addressInput = e => {
   return address;
 }
 
+const signOut = () => {
+  console.log('in signout')
+  document.cookie.split(';').forEach(cookie => document.cookie = cookie.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`));
+  window.location=("http://localhost:8080/");
+}
+
 class Checkout extends Component {
     render(){
 
@@ -46,7 +52,7 @@ class Checkout extends Component {
           <br></br>
           <Link id='successLink' to='/success'>Click on the button to order your coffee!</Link>
           <br></br>
-          <Link id='loginLink' to='/login'>Sign out</Link>
+          <button id="signOut" onClick={() => signOut()}> Sign Out </button>
           <br></br>
           <PayPalScriptProvider options={{ "client-id": "test" }}>
             <PayPalButtons style={{ layout: "horizontal" }} />
